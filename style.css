@@ -1,3 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center; }
 
+h1 {
+  text-align: center;
+  font-size: 340%;
+  margin-bottom: 20%; }
+
+form {
+  background-color: rgba(176, 224, 230, 0.5); }
+
+/*form*/
+#blocForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  height: 400px; }
+  #blocForm label {
+    font-size: 160%; }
+  #blocForm p {
+    font-size: 70%;
+    margin-bottom: 3%; }
+  #blocForm input {
+    width: 300px;
+    margin-bottom: 2%;
+    border: 1px solid #b0e0e6;
+    height: 40px; }
+  #blocForm textarea {
+    width: 300px;
+    height: 150px;
+    border: 1px solid #b0e0e6; }
+  #blocForm #btn {
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 5%; }
+
+/*#blockForm*/
 
 /*# sourceMappingURL=style.css.map */

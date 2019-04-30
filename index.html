@@ -1,0 +1,51 @@
+<!--Idée général : vérifier que les champs soitent remplis dans le bon format en js. -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="style.css" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!--<script src="traitement.js"></script>-->
+	<title>Formulaire</title>
+</head>
+<body>
+
+	<form method="post">
+
+		<div id="blocForm">
+
+			<div class="left">
+
+				<label for="nom" id="label_nom">Nom</label>
+				<p id="label_p_nom">*Champ obligatoire</p>
+		        <input type="text" name="nom1" id="nom" class="vide" /> 
+				<br />
+
+				<label for="mail" id="label_mail">Mail</label>
+				<p id="pMail">*Champ obligatoire</p>
+		        <input type="email" name="mail" id="mail" class="vide" /> 
+
+			</div>
+			
+			<div id="center">
+				<h1>Formulaire</h1>
+				<input type="button" value="Vérifier formulaire" id="btn" onClick="check()" />
+			</div>
+
+			<div class="right">
+
+	        	<label for="contact" id="label_contact">Laissez nous un message</label><br />
+	        	<p id="pArea">*Champ obligatoire</p>
+	      		<textarea name="contact" id="contact" placeholder="Saisissez votre texte..." class="vide"></textarea>
+	      	</div>
+
+	    </div>
+		
+		<!--<input type="submit" value="Envoyer">-->
+		
+
+	</form>
+
+	<script src="script.js"></script>
+</body>
+</html>
