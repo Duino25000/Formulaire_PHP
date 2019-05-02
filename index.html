@@ -5,41 +5,45 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="style.css" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!--<script src="traitement.js"></script>-->
 	<title>Formulaire</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <body>
 
+	<h1>Contact</h1>
+	<h2>Technologie utilisées : HTML/SASS/JavaScript/AJAX/PHP/GIT<br />Responsive : Flexbox et Media Queries</h2>
 	<form method="post">
 
 		<div id="blocForm">
 
-			<div class="left">
-
-				<label for="nom" id="label_nom">Nom</label>
-				<p id="label_p_nom">*Champ obligatoire</p>
-		        <input type="text" name="nom1" id="nom" class="vide" /> 
-				<br />
-
-				<label for="mail" id="label_mail">Mail</label>
-				<p id="pMail">*Champ obligatoire</p>
-		        <input type="email" name="mail" id="mail" class="vide" /> 
-
+			<!--<label for="nom" id="label_nom"><i class="fas fa-user"></i></label>
+			<p id="label_p_nom">*Champ obligatoire</p>
+	        <input type="text" name="nom1" id="nom" class="vide" placeholder="Nom" /> 
+			<br />-->
+			<div id="boxNom" class="boxInput">
+				<label for="nom" id="label_nom"><i class="fas fa-user"></i></label>
+				<input type="text" name="nom1" id="nom" class="vide" placeholder="Nom" />
 			</div>
-			
-			<div id="center">
-				<h1>Formulaire</h1>
-				<input type="button" value="Vérifier formulaire" id="btn" onClick="check()" />
+			<p id="label_p_nom">*Champ obligatoire</p>
+
+
+			<div id="boxMail" class="boxInput">
+				<label for="mail" id="label_mail"><i class="fas fa-envelope"></i></label>
+				<input type="email" name="mail" id="mail" class="vide" placeholder="Mail" /> 
 			</div>
+			<p id="pMail">*Champ obligatoire</p>
+		        
 
-			<div class="right">
-
-	        	<label for="contact" id="label_contact">Laissez nous un message</label><br />
-	        	<p id="pArea">*Champ obligatoire</p>
-	      		<textarea name="contact" id="contact" placeholder="Saisissez votre texte..." class="vide"></textarea>
+			<div id="boxMessage">
+	        	<label for="contact" id="label_contact"><i class="fas fa-comment-alt"></i></label>
+	      		<textarea name="contact" id="contact" placeholder="Laissez nous un message" class="vide"></textarea>
 	      	</div>
+	      	<p id="pArea">*Champ obligatoire</p>
 
 	    </div>
+
+		<h3>Idée général :<br /></h3>
+	    <input type="button" value="Vérifier formulaire" id="btn" onClick="check()" />
 	</form>
 
 	<script src="script.js"></script>

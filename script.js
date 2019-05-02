@@ -20,26 +20,28 @@ function getXMLHttpRequest() {
 	return xhr;
 }
 //*********************************************************************************************************
+
 function traitement() {
 	var nomSaisie = document.querySelector("#nom").value;
 	var mailSaisie = document.querySelector("#mail").value; 
 	var contactSaisie = document.querySelector("#contact").value;
 	
-	var chgt_p_nom = document.querySelector("#label_p_nom");
 	var chgtNom = document.querySelector("#label_nom");
+	var chgt_p_nom = document.querySelector("#label_p_nom");
 	var chgt_p_contact = document.querySelector("#pArea");
 	var chgtContact = document.querySelector("#label_contact");
 	var chgt_p_mail = document.querySelector("#pMail");
 	var chgtMail = document.querySelector("#label_mail");
-	
 
 //************************************
     if (nomSaisie!=""){	
+    	var nomOK=false;//Même méthode pour les 3. Doivent passer true pour envoi au serveur.
     	if(/^[a-zA-Z- ]+$/.test(nomSaisie)){
     		chgtNom.innerHTML = "Nom";
     		chgt_p_nom.innerHTML = "Format correct";
     		document.querySelector("#nom").style.borderColor = 'green';
     		var sVar1 = encodeURIComponent(nomSaisie);
+    		nomOK = true;
     		
     	}else{
     		chgt_p_nom.innerHTML = "Seule les majuscules, minuscules et le tiret sont autorisés.";
@@ -48,11 +50,13 @@ function traitement() {
     }
 //**********************************
 	if (mailSaisie!=""){
+		var mailOK=false;
     	 if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mailSaisie)){
     	 	chgtMail.innerHTML = "Mail";
     		document.querySelector("#mail").style.borderColor = 'green';
     		chgt_p_mail.innerHTML = "Format correct";
     		var sVar2 = encodeURIComponent(mailSaisie);	
+    		mailOK = true;
     		
     	}else{
     		chgt_p_mail.innerHTML = "Veuillez saisir une adresse mail valide.";
@@ -60,29 +64,34 @@ function traitement() {
     	}
     }
 //*********************************
-	if (contactSaisie!=""){  	
-	    	if(/^[a-zA-Z0-9-()!?@.,;:{}"']+$/.test(contactSaisie)){
-	    		chgtContact.innerHTML = "Laissez nous un message";
-	    		document.querySelector("#contact").style.borderColor = 'green';	
-	    		chgt_p_contact.innerHTML = "Format correct";
-	    		var sVar3 = encodeURIComponent(contactSaisie);
-	    		
-	    	}else{
-	    		chgt_p_contact.innerHTML = "Caractère spécial non autorisé";
-	    		document.querySelector("#contact").style.borderColor = 'red';
-	    	}
+	if (contactSaisie!=""){
+		var messageOK=false;
+    	if(/^[a-zA-Z0-9-()!?@.,;:{}"']+$/.test(contactSaisie)){
+    		chgtContact.innerHTML = "Laissez nous un message";
+    		document.querySelector("#contact").style.borderColor = 'green';	
+    		chgt_p_contact.innerHTML = "Format correct";
+    		var sVar3 = encodeURIComponent(contactSaisie);
+    		messageOK = true;
+    		
+    	}else{
+    		chgt_p_contact.innerHTML = "Caractère spécial non autorisé";
+    		document.querySelector("#contact").style.borderColor = 'red';
+    	}
 	}
+//*******************************
+	if(nomOK && mailOK && messageOK){//Sous entend true, envoi du formulaire au serveur.
+		var xhr = getXMLHttpRequest(); 
+		xhr.onreadystatechange = function() {
+		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+			alert(xhr.responseText);
+			}
+		};
 
-	var xhr = getXMLHttpRequest(); 
-	xhr.onreadystatechange = function() {
-	if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-		alert(xhr.responseText);
-		}
-	};
-	xhr.open("GET", "traitement.php?variable1=" + sVar1 + "&variable2= " + sVar2 + "&variable3= " + sVar3, true);
-	xhr.send(null);
-}//fonction
-//*************************************************************************************
+		xhr.open("GET", "traitement.php?variable1=" + sVar1 + "&variable2= " + sVar2 + "&variable3= " + sVar3, true);
+		xhr.send(null);
+	}
+}//fonction traitement
+//********************************************************************************************
 var flag=true;
 function check(){
 	var inputs = document.querySelectorAll(".vide");
@@ -105,6 +114,6 @@ function check(){
   			traitement();
   		}
 	}//for
-}//fonction
+}//fonction check
 //***************************************************************
 
